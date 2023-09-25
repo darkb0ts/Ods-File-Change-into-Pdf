@@ -24,7 +24,7 @@ namespace Ods_to_Pdf
         {
             OdsLoadOptions loadOptions = new OdsLoadOptions();
             Workbook workbook = new Workbook(filename, loadOptions);
-            Worksheet worksheet = workbook.Worksheets[1];
+            Worksheet worksheet = workbook.Worksheets[0];
             Cell cell = worksheet.Cells["B11"];
             cell.PutValue("Prasanna");
         }
@@ -49,10 +49,19 @@ namespace Ods_to_Pdf
             {
                 string filename = openFileDialog1.FileName;
                 string outputfile = openFileDialog1.FileName;
-                GolbalVariable.TemplateFilename = openFileDialog1.FileName;
-                OdsLoadOptions loadOptions = new OdsLoadOptions();
-                Workbook workbook = new Workbook(filename, loadOptions);
-                Worksheet worksheet = workbook.Worksheets[1];
+                FilenameOutput.Text = filename;
+                GolbalVariable.InputFilename = openFileDialog1.FileName;
+                try
+                {
+                    OdsLoadOptions loadOptions = new OdsLoadOptions();
+                    Workbook workbook = new Workbook(filename, loadOptions);
+                    Worksheet worksheet = workbook.Worksheets[0];
+                }
+                catch
+                {
+                    MessageBox.Show("Unable to Open File");
+                }
+
 
                 // Save as PDF
                 //string outputPath = "D:\\C#\\output.pdf";
@@ -114,6 +123,8 @@ namespace Ods_to_Pdf
                 Console.WriteLine(GolbalVariable.InputFilename);
                 if (openFileDialog2.ShowDialog() == DialogResult.OK)
                 {
+                    TemplateName.Text = openFileDialog2.FileName;
+                    GolbalVariable.TemplateFilename = openFileDialog2.FileName;
                     string InputFilename = openFileDialog2.FileName;
 
 
@@ -133,7 +144,7 @@ namespace Ods_to_Pdf
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (GolbalVariable.TemplateFilename != null && GolbalVariable.InputFilename !=null)
+            if (GolbalVariable.TemplateFilename != null && GolbalVariable.InputFilename != null)
             {
                 Console.WriteLine("Yes");
             }
@@ -141,6 +152,11 @@ namespace Ods_to_Pdf
             {
                 MessageBox.Show("Unable to Create a File");
             }
+        }
+
+        private void Filename_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

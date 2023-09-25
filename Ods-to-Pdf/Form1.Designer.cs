@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            TemplateName = new Label();
+            label1 = new Label();
             button3 = new Button();
             FilenameOutput = new Label();
             Filename = new Label();
@@ -41,6 +43,8 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(TemplateName);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(button3);
             groupBox1.Controls.Add(FilenameOutput);
             groupBox1.Controls.Add(Filename);
@@ -53,9 +57,27 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "groupBox1";
             // 
+            // TemplateName
+            // 
+            TemplateName.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            TemplateName.Location = new Point(191, 58);
+            TemplateName.Name = "TemplateName";
+            TemplateName.Size = new Size(475, 39);
+            TemplateName.TabIndex = 7;
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.ForeColor = SystemColors.ControlText;
+            label1.Location = new Point(17, 55);
+            label1.Name = "label1";
+            label1.Size = new Size(145, 39);
+            label1.TabIndex = 6;
+            label1.Text = "Template :";
+            // 
             // button3
             // 
-            button3.Location = new Point(43, 120);
+            button3.Location = new Point(42, 120);
             button3.Name = "button3";
             button3.Size = new Size(140, 42);
             button3.TabIndex = 5;
@@ -66,7 +88,7 @@
             // FilenameOutput
             // 
             FilenameOutput.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            FilenameOutput.Location = new Point(132, 37);
+            FilenameOutput.Location = new Point(191, 19);
             FilenameOutput.Name = "FilenameOutput";
             FilenameOutput.Size = new Size(475, 39);
             FilenameOutput.TabIndex = 4;
@@ -75,15 +97,16 @@
             // 
             Filename.Font = new Font("Segoe UI", 14.25F, FontStyle.Bold, GraphicsUnit.Point);
             Filename.ForeColor = SystemColors.ControlText;
-            Filename.Location = new Point(17, 37);
+            Filename.Location = new Point(17, 19);
             Filename.Name = "Filename";
             Filename.Size = new Size(145, 39);
             Filename.TabIndex = 3;
             Filename.Text = "Filename :";
+            Filename.Click += Filename_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(402, 120);
+            button2.Location = new Point(391, 120);
             button2.Name = "button2";
             button2.Size = new Size(134, 42);
             button2.TabIndex = 2;
@@ -93,7 +116,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(225, 120);
+            button1.Location = new Point(216, 120);
             button1.Name = "button1";
             button1.Size = new Size(134, 42);
             button1.TabIndex = 1;
@@ -131,5 +154,7 @@
         private Label FilenameOutput;
         private Button button3;
         private OpenFileDialog openFileDialog2;
+        private Label label1;
+        private Label TemplateName;
     }
 }
